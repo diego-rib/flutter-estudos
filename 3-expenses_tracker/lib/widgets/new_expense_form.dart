@@ -150,7 +150,7 @@ class _NewExpenseFormState extends State<NewExpenseForm> {
                 },
               ),
               const Spacer(),
-              ElevatedButton(
+              TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
