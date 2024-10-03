@@ -11,6 +11,15 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main() {
+  // Como travar o app em algum modo específico (Celular em pé/ Deitado)
+  // WidgetsFlutterBinding.ensureInitialized();
+
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
+  //   runApp(const MainApp());
+  // });
+
   runApp(const MainApp());
 }
 
