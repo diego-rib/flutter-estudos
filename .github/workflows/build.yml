@@ -10,7 +10,7 @@ on:
     branches: ["main"]
 
 jobs:
-  Shopping List Workflow:
+  Shopping_List_Workflow:
     # Available Options: windows-latest, ubuntu-latest, macos-latest
     # The choice of macos-latest is because we will be building for Android and iOS
     runs-on: macos-latest
