@@ -146,6 +146,10 @@ class _GroceryListState extends State<GroceryList> {
       );
     }
 
+    if (_isLoading) {
+      content = const Center(child: CircularProgressIndicator());
+    }
+
     if (_error != null) {
       content = Center(child: Text(_error!));
     }

@@ -23,6 +23,19 @@ class _NewItemFormState extends State<NewItemForm> {
   int _enteredQuantity = 1;
   Category _selectedCategory = categories[Categories.vegetables]!;
 
+  void closeForm(String? id) {
+    if (id == null) return;
+
+    Navigator.of(context).pop(
+      GroceryItem(
+        id: id,
+        name: _enteredName,
+        quantity: _enteredQuantity,
+        category: _selectedCategory,
+      ),
+    );
+  }
+
   void _resetForm() {
     _formKey.currentState!.reset();
   }
@@ -56,22 +69,13 @@ class _NewItemFormState extends State<NewItemForm> {
         return;
       }
 
-      if (!context.mounted) return;
-
       final returnedId = json.decode(response.body);
 
       setState(() {
         _isSending = false;
       });
 
-      Navigator.of(context).pop(
-        GroceryItem(
-          id: returnedId['name'],
-          name: _enteredName,
-          quantity: _enteredQuantity,
-          category: _selectedCategory,
-        ),
-      );
+      closeForm(returnedId["name"]);
     }
   }
 
