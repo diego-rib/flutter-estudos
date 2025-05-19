@@ -1,5 +1,5 @@
 # Note: In a yml each level is padded by 2 spaces
-name: Shopping List Workflow
+name: Flutter
 
 on:
   # Runs this action when you push on master
@@ -10,10 +10,14 @@ on:
     branches: ["main"]
 
 jobs:
-  flutter_job:
+  Shopping List Workflow:
     # Available Options: windows-latest, ubuntu-latest, macos-latest
     # The choice of macos-latest is because we will be building for Android and iOS
     runs-on: macos-latest
+
+    defaults:
+      run:
+        working-directory: ./5 - shopping_list
 
     steps:
       # Clones the project on the machine
