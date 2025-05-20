@@ -10,7 +10,8 @@ on:
     branches: ["main"]
 
 jobs:
-  Shopping_List_Workflow:
+  build:
+    name: Shopping List Build & Release
     # Available Options: windows-latest, ubuntu-latest, macos-latest
     # The choice of macos-latest is because we will be building for Android and iOS
     runs-on: macos-latest
@@ -59,6 +60,25 @@ jobs:
       # Create android apk
       - name: Build apk
         run: flutter build apk
+
+      # Create iOS ipa
+      - name: Build ipa
+        run: |
+          flutter build ios --no-codesign
+          cd build/ios/iphoneos
+          mkdir Payload
+          cd Payload
+          ln -s ../Runner.app
+          cd ..
+          zip -r app.ipa Payload
+
+      # Publish .ipa | .apk | .aab to Github Releases
+      # - name: Push to Releases
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
+      #     tag: v1.0.${{ github.run_number }}
+      #     token: ${{ secrets.TOKEN }}
 
       # Upload apk to Firebase distribution
       # - name: Upload apk to Firebase distribution
